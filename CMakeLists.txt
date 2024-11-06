@@ -17,13 +17,12 @@ include_directories(${RAYLIB_PATH}/include)
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})
 
 if (APPLE)
-target_link_libraries(${PROJECT_NAME} ${PROJECT_SOURCE_DIR}/${RAYLIB_PATH}/lib/libraylib-macos.a
+    target_link_libraries(${PROJECT_NAME} ${PROJECT_SOURCE_DIR}/${RAYLIB_PATH}/lib/libraylib-macos.a
         "-framework CoreVideo"
         "-framework IOKit"
         "-framework Cocoa")
 elseif (UNIX AND NOT APPLE)
     target_link_libraries(${PROJECT_NAME} ${PROJECT_SOURCE_DIR}/${RAYLIB_PATH}/lib/libraylib-linux.a)
 else ()
-    target_link_libraries(${PROJECT_NAME} -lGdi32 -lWinMM -lUser32 -lshell32 -lOpenGL32 -lkernel32)
-    target_link_libraries(${PROJECT_NAME} ${PROJECT_SOURCE_DIR}/${RAYLIB_PATH}/lib/libraylib-windows.lib)
+    target_link_libraries(${PROJECT_NAME} Winmm.lib ${PROJECT_SOURCE_DIR}/${RAYLIB_PATH}/lib/libraylib-windows.lib)
 endif ()
