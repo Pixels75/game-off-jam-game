@@ -3,7 +3,8 @@
 #include "Object/Object.h"
 
 int main() {
-    InitWindow(600, 400, "Hello World");
+    SetConfigFlags(FLAG_VSYNC_HINT);
+    InitWindow(640, 480, "Hello Raylib");
     Object obj;
 
     while (!WindowShouldClose()) {
