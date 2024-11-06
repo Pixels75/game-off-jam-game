@@ -24,5 +24,6 @@ target_link_libraries(${PROJECT_NAME} ${PROJECT_SOURCE_DIR}/${RAYLIB_PATH}/lib/l
 elseif (UNIX AND NOT APPLE)
     target_link_libraries(${PROJECT_NAME} ${PROJECT_SOURCE_DIR}/${RAYLIB_PATH}/lib/libraylib-linux.a)
 else ()
+    target_link_libraries(${PROJECT_NAME} module -lGdi32 -lWinMM -lUser32 -lshell32 -lOpenGL32 -lkernel32)
     target_link_libraries(${PROJECT_NAME} ${PROJECT_SOURCE_DIR}/${RAYLIB_PATH}/lib/libraylib-windows.lib)
 endif ()
